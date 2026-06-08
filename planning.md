@@ -56,11 +56,11 @@ A cultural listicle web app showcasing famous Ethiopian dishes, their ingredient
 - [x] Use PicoCSS-friendly card layout
 
 ## Step 6: Build Detail Pages
-- [ ] Display selected dish name
-- [ ] Display dish image
-- [ ] Display all fields from the data object
-- [ ] Add cultural context
-- [ ] Add link back to homepage
+- [x] Display selected dish name
+- [x] Display dish image
+- [x] Display all fields from the data object
+- [x] Add cultural context
+- [x] Add link back to homepage
 
 ## Step 7: Add Custom Styling
 - [ ] Create `public/style.css`

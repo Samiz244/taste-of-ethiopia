@@ -6,7 +6,7 @@ const dishes = [
     mainIngredient: "Chicken, berbere spice, onions, boiled eggs",
     regionOrCulture: "Ethiopian Orthodox holiday tradition",
     occasion: "Major holidays and family celebrations",
-    image: "/images/doro-wat.jpg"
+    image: "/images/doro-wat.png"
   },
   {
     id: "kitfo",
@@ -15,7 +15,7 @@ const dishes = [
     mainIngredient: "Beef, niter kibbeh, mitmita",
     regionOrCulture: "Gurage cultural dish",
     occasion: "Special gatherings and celebrations",
-    image: "/images/kitfo.jpg"
+    image: "/images/kitfo.png"
   },
   {
     id: "shiro",
@@ -24,7 +24,7 @@ const dishes = [
     mainIngredient: "Chickpea flour, garlic, onions, spices",
     regionOrCulture: "Ethiopian fasting tradition",
     occasion: "Fasting seasons and everyday meals",
-    image: "/images/shiro.jpg"
+    image: "/images/shiro.png"
   },
   {
     id: "tibs",
@@ -33,7 +33,7 @@ const dishes = [
     mainIngredient: "Beef or lamb, onions, peppers",
     regionOrCulture: "Ethiopian celebration cuisine",
     occasion: "Festivals, gatherings, and restaurant dining",
-    image: "/images/tibs.jpg"
+    image: "/images/tibs.png"
   },
   {
     id: "beyaynetu",
@@ -42,7 +42,7 @@ const dishes = [
     mainIngredient: "Lentils, vegetables, chickpeas, injera",
     regionOrCulture: "Ethiopian fasting tradition",
     occasion: "Fasting periods and communal meals",
-    image: "/images/beyaynetu.jpg"
+    image: "/images/beyaynetu.png"
   }
 ];
 

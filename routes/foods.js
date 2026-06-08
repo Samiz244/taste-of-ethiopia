@@ -49,7 +49,51 @@ router.get("/foods/:id", (req, res) => {
     return res.status(404).send("Dish not found");
   }
 
-  res.send(`Detail page for ${dish.name}`);
+  res.send(`
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>${dish.name}</title>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+      />
+      <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+      <main class="container">
+        <a href="/">← Back Home</a>
+
+        <h1>${dish.name}</h1>
+
+        <img
+          src="${dish.image}"
+          alt="${dish.name}"
+          style="max-width: 500px; width: 100%;"
+        />
+
+        <p>${dish.description}</p>
+
+        <p>
+          <strong>Main Ingredient:</strong>
+          ${dish.mainIngredient}
+        </p>
+
+        <p>
+          <strong>Region/Culture:</strong>
+          ${dish.regionOrCulture}
+        </p>
+
+        <p>
+          <strong>Occasion:</strong>
+          ${dish.occasion}
+        </p>
+      </main>
+    </body>
+  </html>
+`);
 });
 
 export default router;
