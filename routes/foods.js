@@ -1,6 +1,42 @@
 import express from "express";
 import dishes from "../data/dishes.js";
 
+function render404() {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 - Page Not Found</title>
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        />
+
+        <link rel="stylesheet" href="/style.css" />
+      </head>
+      <body>
+        <main class="container detail-container">
+          <article>
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+
+            <p>
+              Sorry, the page you are looking for does not exist.
+            </p>
+
+            <a href="/" role="button">
+              Return Home
+            </a>
+          </article>
+        </main>
+      </body>
+    </html>
+  `;
+}
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -46,7 +82,7 @@ router.get("/foods/:id", (req, res) => {
   const dish = dishes.find((dish) => dish.id === requestedId);
 
   if (!dish) {
-    return res.status(404).send("Dish not found");
+    return res.status(404).send(render404());
   }
 
   res.send(`
@@ -96,4 +132,7 @@ router.get("/foods/:id", (req, res) => {
 `);
 });
 
+router.use((req, res) => {
+  res.status(404).send(render404());
+});
 export default router;
