@@ -9,15 +9,15 @@ A cultural listicle web app showcasing famous Ethiopian dishes, their ingredient
 - [ ] 404 page: any unmatched route
 
 ## Step 1: Create the Project
-- [ ] Create project folder
-- [ ] Initialize Node project
-- [ ] Install Express
-- [ ] Set up folders: `public`, `data`, `routes`, `views`
+- [x] Create project folder
+- [x] Initialize Node project
+- [x] Install Express
+- [x] Set up folders: `public`, `data`, `routes`, `views`
 
 ## Step 2: Define the Data
-- [ ] Create `data/dishes.js`
-- [ ] Add at least 5 Ethiopian dishes
-- [ ] Each dish must have:
+- [x] Create `data/dishes.js`
+- [x] Add at least 5 Ethiopian dishes
+- [x] Each dish must have:
   - `id`
   - `name`
   - `description`
@@ -25,21 +25,26 @@ A cultural listicle web app showcasing famous Ethiopian dishes, their ingredient
   - `regionOrCulture`
   - `occasion`
   - `image`
-- [ ] Use unique `id` values like `doro-wat`, `kitfo`, `injera`
+- [x] Use unique `id` values like `doro-wat`, `kitfo`, `injera`
 
 ## Step 3: Set Up Express Server
-- [ ] Create `server.js`
-- [ ] Import Express
-- [ ] Serve static files from `public`
-- [ ] Connect routes
-- [ ] Start server on port `3000`
+- [x] Create `server.js`
+- [x] Import Express
+- [x] Create Express app
+- [x] Serve static files from `public`
+- [x] Start server on port `3000`
+- [x] Verify browser can connect
 
 ## Step 4: Create Routes
-- [ ] Create route for `/`
-- [ ] Create route for `/foods/:id`
-- [ ] Use `req.params.id` to find the matching dish
-- [ ] Redirect unmatched dish IDs to 404
-- [ ] Create 404 route for unmatched URLs
+- [x] Create `routes/foods.js`
+- [x] Import Express Router
+- [x] Import dishes data
+- [x] Create route for `/`
+- [x] Create route for `/foods/:id`
+- [x] Use `req.params.id` to find the matching dish
+- [x] Handle unmatched dish IDs
+- [x] Connect `foods.js` router to `server.js`
+- [x] Create 404 route for unmatched URLs
 
 ## Step 5: Build the Home Page
 - [ ] Add PicoCSS CDN in the HTML `<head>`
