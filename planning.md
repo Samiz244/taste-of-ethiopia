@@ -47,13 +47,13 @@ A cultural listicle web app showcasing famous Ethiopian dishes, their ingredient
 - [x] Create 404 route for unmatched URLs
 
 ## Step 5: Build the Home Page
-- [ ] Add PicoCSS CDN in the HTML `<head>`
-- [ ] Create semantic HTML structure
-- [ ] Display title: `Taste of Ethiopia`
-- [ ] Display at least 5 dishes
-- [ ] Show at least 3 attributes per dish
-- [ ] Make each dish clickable
-- [ ] Use PicoCSS-friendly card layout
+- [x] Add PicoCSS CDN in the HTML `<head>`
+- [x] Create semantic HTML structure
+- [x] Display title: `Taste of Ethiopia`
+- [x] Display at least 5 dishes
+- [x] Show at least 3 attributes per dish
+- [x] Make each dish clickable
+- [x] Use PicoCSS-friendly card layout
 
 ## Step 6: Build Detail Pages
 - [ ] Display selected dish name
