@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
         <link rel="stylesheet" href="/style.css" />
       </head>
       <body>
-        <main class="container">
+        <main class="container ">
           <h1>Taste of Ethiopia</h1>
           <p>Famous Ethiopian dishes and their cultural stories.</p>
           <section class="dish-grid">
@@ -63,8 +63,8 @@ router.get("/foods/:id", (req, res) => {
       <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-      <main class="container">
-        <a href="/">← Back Home</a>
+      <main class="container detail-container">
+        <a  class="back-link" href="/">← Back Home</a>
 
         <h1>${dish.name}</h1>
 
