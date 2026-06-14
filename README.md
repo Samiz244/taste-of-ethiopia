@@ -1,56 +1,55 @@
-# WEB103 Project 1 - *Taste of Ethiopia*
+# WEB103 Project 2 - Taste of Ethiopia
 
 Submitted by: **Samuel Alemu**
 
-About this web app: **Taste of Ethiopia is a cultural listicle web application that showcases five famous Ethiopian dishes. Users can browse featured dishes on the homepage and click on any dish to learn more about its ingredients, cultural significance, and traditional occasions where it is served.**
+About this web app: **Taste of Ethiopia is a web application that showcases five popular Ethiopian dishes and their cultural significance. The application retrieves dish information from a PostgreSQL database hosted on Render and displays detailed information about each dish using an Express backend and vanilla HTML, CSS, and JavaScript.**
 
-Time spent: **6** hours
+Time spent: **11 hours**
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-* [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
-* [x] **The web app displays a title**
-* [x] **The web app displays at least five unique list items, each with at least three displayed attributes (such as title, text, and image)**
-* [x] **The user can click on each item in the list to see a detailed view of it, including all database fields**
+- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
+  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [x] **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
 
-  * [x] **Each detail view should be a unique endpoint, such as `localhost:3000/foods/doro-wat` and `localhost:3000/foods/kitfo`**
-  * [x] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view.*
-* [x] **The web app serves an appropriate 404 page when no matching route is defined**
-* [x] **The web app is styled using Picocss**
+## The following **optional** features are implemented:
 
-The following **optional** features are implemented:
+- [ ] The user can search for items by a specific attribute
 
-* [x] The web app displays items in a unique card-based layout with hover animations
+## The following **additional** features are implemented:
 
-The following **additional** features are implemented:
-
-* [x] Custom responsive grid layout for dish cards
-* [x] Hover effects and enhanced card styling
-* [x] Centered detail pages with improved readability
-* [x] Custom styled 404 page with navigation back to the homepage
+- [x] Dynamic routing for individual dish detail pages
+- [x] Custom 404 page for invalid routes
+- [x] Responsive card-based layout using PicoCSS
+- [x] PostgreSQL integration using pg.Pool()
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
+
 <div>
-    <a href="https://www.loom.com/share/376a7dc8fd8d4574bd2142e373e56ed2">
-      <p>Taste of Ethiopia - 8 June 2026 - Watch Video</p>
+    <a href="https://www.loom.com/share/514251b4db124a41bb8b28cee6e871e1">
+      <p>dishes ・ Database ・ Render Dashboard - 14 June 2026 - Watch Video</p>
     </a>
-    <a href="https://www.loom.com/share/376a7dc8fd8d4574bd2142e373e56ed2">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/376a7dc8fd8d4574bd2142e373e56ed2-fb8167bd2622c7e8-full-play.gif#t=0.1">
+    <a href="https://www.loom.com/share/514251b4db124a41bb8b28cee6e871e1">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/514251b4db124a41bb8b28cee6e871e1-82e7dcc0a22e87dd-full-play.gif#t=0.1">
     </a>
   </div>
-
-GIF created with imgur
+GIF created with Loom
 
 ## Notes
 
-One challenge during development was implementing a custom 404 page while using the latest Express routing behavior. The wildcard route syntax caused a routing error, which was resolved by using router middleware to handle unmatched routes. Another challenge was designing a clean card-based layout while keeping the application simple and compliant with the project requirements.
+One challenge was migrating the application from hardcoded JavaScript data to a PostgreSQL database while maintaining the existing functionality. Another challenge was learning how to connect to a Render-hosted PostgreSQL database using psql and integrating database queries into the Express routes.
 
 ## License
 
 Copyright 2026 Samuel Alemu
 
-Licensed under the Apache License, Version 2.0.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+> http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
