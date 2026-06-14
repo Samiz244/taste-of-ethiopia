@@ -1,6 +1,5 @@
 import express from "express";
-import dishes from "../data/dishes.js";
-
+import pool from "../config/database.js";
 function render404() {
   return `
     <!DOCTYPE html>
@@ -39,97 +38,99 @@ function render404() {
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const dishCards = dishes
-    .map(
-      (dish) => `
-        <article>
-          <img src="${dish.image}" alt="${dish.name}" />
-          <h2>${dish.name}</h2>
-          <p>${dish.description}</p>
-          <p><strong>Occasion:</strong> ${dish.occasion}</p>
-          <a href="/foods/${dish.id}" role="button">View Details</a>
-        </article>
-      `
-    )
-    .join("");
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM foods ORDER BY id ASC;");
+    const dishes = result.rows;
 
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Taste of Ethiopia</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-        <link rel="stylesheet" href="/style.css" />
-      </head>
-      <body>
-        <main class="container ">
-          <h1>Taste of Ethiopia</h1>
-          <p>Famous Ethiopian dishes and their cultural stories.</p>
-          <section class="dish-grid">
-            ${dishCards}
-          </section>
-        </main>
-      </body>
-    </html>
-  `);
-});
+    const dishCards = dishes
+      .map(
+        (dish) => `
+          <article>
+            <img src="${dish.image}" alt="${dish.name}" />
+            <h2>${dish.name}</h2>
+            <p>${dish.description}</p>
+            <p><strong>Occasion:</strong> ${dish.occasion}</p>
+            <a href="/foods/${dish.id}" role="button">View Details</a>
+          </article>
+        `
+      )
+      .join("");
 
-router.get("/foods/:id", (req, res) => {
-  const requestedId = req.params.id;
-  const dish = dishes.find((dish) => dish.id === requestedId);
-
-  if (!dish) {
-    return res.status(404).send(render404());
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Taste of Ethiopia</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+          <link rel="stylesheet" href="/style.css" />
+        </head>
+        <body>
+          <main class="container ">
+            <h1>Taste of Ethiopia</h1>
+            <p>Famous Ethiopian dishes and their cultural stories.</p>
+            <section class="dish-grid">
+              ${dishCards}
+            </section>
+          </main>
+        </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Database error");
   }
+});
+router.get("/foods/:id", async (req, res) => {
+  try {
+    const requestedId = req.params.id;
 
-  res.send(`
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>${dish.name}</title>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-      />
-      <link rel="stylesheet" href="/style.css" />
-    </head>
-    <body>
-      <main class="container detail-container">
-        <a  class="back-link" href="/">← Back Home</a>
+    const result = await pool.query(
+      "SELECT * FROM foods WHERE id = $1;",
+      [requestedId]
+    );
 
-        <h1>${dish.name}</h1>
+    const dish = result.rows[0];
 
-        <img
-          src="${dish.image}"
-          alt="${dish.name}"
-          style="max-width: 500px; width: 100%;"
-        />
+    if (!dish) {
+      return res.status(404).send(render404());
+    }
 
-        <p>${dish.description}</p>
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>${dish.name}</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+          <link rel="stylesheet" href="/style.css" />
+        </head>
+        <body>
+          <main class="container detail-container">
+            <a class="back-link" href="/foods">← Back to Foods</a>
 
-        <p>
-          <strong>Main Ingredient:</strong>
-          ${dish.mainIngredient}
-        </p>
+            <h1>${dish.name}</h1>
 
-        <p>
-          <strong>Region/Culture:</strong>
-          ${dish.regionOrCulture}
-        </p>
+            <img src="${dish.image}" alt="${dish.name}" style="max-width: 500px; width: 100%;" />
 
-        <p>
-          <strong>Occasion:</strong>
-          ${dish.occasion}
-        </p>
-      </main>
-    </body>
-  </html>
-`);
+            <p>${dish.description}</p>
+
+            <p><strong>Main Ingredient:</strong> ${dish.main_ingredient}</p>
+
+            <p><strong>Region/Culture:</strong> ${dish.region_or_culture}</p>
+
+            <p><strong>Occasion:</strong> ${dish.occasion}</p>
+          </main>
+        </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Database error");
+  }
 });
 
 router.use((req, res) => {
